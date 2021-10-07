@@ -1,0 +1,23 @@
+class finder:
+  def __init__(self,lis):#creating instance variable inside the class
+    self.lis=lis   
+
+  def triplets(self): # creating method
+    a=0    # flag variable for identifying triplet variable is found or not
+    for i in range(len(self.lis)-1): # this loop gives index for elements from 0 to second last element
+       value_set=set() # creating set to add values for further evaluations 
+       for j in range(i,len(self.lis)): # the loop which gives index for elements from the index value from previous loop till the last element
+          sum=-(self.lis[i]+self.lis[j]) # the variable which stores the negative sum value 
+          if sum in value_set: # --checks if the sum value is present inside the set
+            print(f"Triplet found : {(self.lis[i],self.lis[j],sum)}") # if the negative index value is present then we have a triplets whose sum=0
+            a=1
+          else:
+            value_set.add(self.lis[j]) # adding the values to the set to avoid repitiion
+    if a==0: # while the flag is set to 0 (false) the program will know it has not found triplet value
+      print("Triplets not found")
+"""Since we are using two for loops here the time complexity will be O(n^2)"""
+N=int(input('Enter the number of elements '))
+lis=[int(input(f"enter Number {i+1} : ")) for i in range(N)]
+obj=finder(lis) # assinging an object
+
+obj.triplets() # calling the method inside the classs     
