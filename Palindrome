@@ -1,0 +1,19 @@
+
+def palindrome(text): # this function will take in text as parameter
+  if type(text)==int: # checks the type of text and if the type is int converts it to string
+    new=str(text)
+    if new==new[::-1]: # reverses the string using slicing and compares if both equal
+      print('palindrome') 
+    else:
+      print('Not a palindrome')
+  elif type(text)==str: # checks if the type is string and reverses to check if its palindrome
+    if text==text[::-1]:
+      print('palindrome')
+    else:
+      print('Not a palindrome') 
+  else:
+    print('Enter a string or number')
+
+
+string=input('Enter a word or number : ')
+palindrome(string)
