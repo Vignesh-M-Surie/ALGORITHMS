@@ -1,0 +1,40 @@
+def merge(lis):
+  """Merge sort mainly uses the idea of diving the list in to left and right list
+  the splitting of list goes on till they end up with single entities, after splitting the list
+  we will compare the left list and right list and starts to merge them into a new list"""
+  if len(lis)>1: # termination condition for recursion
+    mid=len(lis)//2 #Dividing the list into two
+    left=lis[:mid] #left list
+    right=lis[mid:] # right list
+    merge(left) # calling the function for recursion
+    merge(right) #calling the function for recusion of right list
+    left_index=0 #creating index for comparing values in left index
+    right_index=0 # creating index for comparing values in the right index
+    main_index=0 # creating the main index to assing values to the  main list
+    
+    while left_index<len(left) and right_index<len(right): # while loop which terminates on when len of list is less than the index values
+      if left[left_index]< right[right_index]: #comparing the left list values with right list
+        lis[main_index]=left[left_index]   # assings the left list value to the main list
+        main_index+=1    #incrementing the indexes
+        left_index+=1
+      else:
+        lis[main_index]=right[right_index] # doing the same incase if right list is greater one
+        main_index+=1
+        right_index+=1
+    """suppose a case occurs where the len of left list is greater than right list or vice versa in such cases the loop terminate without
+             shifting all elements hence we have to use another loop to ensure the all elements are assinged to the main index"""
+    while left_index<len(left):  
+      lis[main_index]=left[left_index]
+      left_index+=1
+      main_index+=1
+    while right_index<len(right):
+      lis[main_index]=right[right_index]
+      right_index+=1
+      main_index+=1
+      
+N=int(input('Enter the number of elements '))
+lis=[int(input(f"enter Number {i+1} : ")) for i in range(N)]
+obj=sort(lis) # assinging an object
+
+obj.insertion() # calling the method inside the classs
+print(lis)
