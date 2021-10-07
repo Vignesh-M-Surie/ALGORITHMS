@@ -1,0 +1,27 @@
+class sort:
+
+  def __init__(self,lis): #creating an instance variable for list
+    self.lis=lis  
+  def insertion(self):
+    """Insertion sort works on the basis of comparing a value with its predecessors in list
+       STEP1: check if the current value of list at a particular index is less than the previous value
+       STEP2: If the values is less than the previous values the move the previous value to current index of list
+       STEP3: Repeat step 1 for values before previous value
+       STEP4: If the current value is greater than previous values then assign the current value to the present index position of list"""
+
+
+    for i in range(1,len(self.lis)):  
+      current=self.lis[i] #assigning the current value to a variable
+      pos=i  #assigning the position
+      while current<self.lis[pos-1] and pos>0: # this loop compares the current value with the previous value of the list and 
+        self.lis[pos]=self.lis[pos-1] # if the current value is found to be less than the preceeding one then assign the greater value to the current position
+        pos-=1 # decreasing the index value
+      self.lis[pos]=current # if the current value is greater than preceeding one then the current value will be assigned to the current position
+
+
+N=int(input('enter the number of elements'))
+lis=[int(input(f"enter Number {i+1} : ")) for i in range(N)]
+obj=sort(lis) # assinging an object
+
+obj.insertion() # calling the method inside the classs
+print(lis)
